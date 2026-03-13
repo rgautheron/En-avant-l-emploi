@@ -622,7 +622,7 @@ function getInitials(name) {
 // ================================================================
 function buildCard(company, cfg) {
   const initials  = getInitials(company.nom);
-  const searchUrl = `https://www.google.com/search?q="${encodeURIComponent(company.nom)}"&hl=fr&udm=8&jbr=sep:0`;
+  const searchUrl = `https://www.google.com/search?q=%22${encodeURIComponent(company.nom)}%22&hl=fr&udm=8&jbr=sep:0`;
   const secteurLabel = company.secteur || 'Autre';
 
   // Logo : image si URL renseignée, sinon initiales colorées avec fallback
