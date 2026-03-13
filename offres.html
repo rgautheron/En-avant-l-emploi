@@ -583,6 +583,7 @@ function parseCSV(text) {
       secteur:  (cols[2] || '').trim() || 'Autre',
       activite: (cols[3] || '').trim(),
       logo:     (cols[4] || '').trim(),   // colonne E : URL du logo
+      carriere: (cols[5] || '').trim(),   // colonne F : page carrière
     });
   }
   return rows;
@@ -623,6 +624,7 @@ function getInitials(name) {
 function buildCard(company, cfg) {
   const initials  = getInitials(company.nom);
   const searchUrl = `https://www.google.com/search?q=%22${encodeURIComponent(company.nom)}%22&hl=fr&udm=8&jbr=sep:0`;
+  const offreUrl  = company.carriere || searchUrl;
   const secteurLabel = company.secteur || 'Autre';
 
   // Logo : image si URL renseignée, sinon initiales colorées avec fallback
@@ -664,7 +666,7 @@ function buildCard(company, cfg) {
       </div>
       <div class="company-footer">
         <span class="company-tag">${escHtml(secteurLabel)}</span>
-        <a href="${searchUrl}" target="_blank" rel="noopener" class="btn-offres">
+        <a href="${offreUrl}" target="_blank" rel="noopener" class="btn-offres">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M3 8h10M9 4l4 4-4 4"/>
           </svg>
