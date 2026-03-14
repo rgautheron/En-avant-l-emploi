@@ -197,12 +197,6 @@
       letter-spacing: -0.5px;
       border: 2px solid rgba(0,0,0,0.06);
     }
-    .company-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 10px;
-    }
 
     .company-info { flex: 1; }
     .company-name {
@@ -235,7 +229,6 @@
       font-size: 13px;
       color: var(--text-light);
       line-height: 1.4;
-      margin-bottom: 4px;
     }
     .company-location svg {
       flex-shrink: 0;
@@ -288,129 +281,43 @@
     }
     .btn-offres svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-    /* ===== COULEURS PAR SECTEUR ===== */
-    .s-industrie          { --card-accent: #6366F1; }
-    .s-agro               { --card-accent: #F59E0B; }
-    .s-commerce           { --card-accent: #EC4899; }
-    .s-services-personne  { --card-accent: #10B981; }
-    .s-tourisme           { --card-accent: #06B6D4; }
-    .s-btp                { --card-accent: #F97316; }
-    .s-services           { --card-accent: #8B5CF6; }
-    .s-agri               { --card-accent: #65A30D; }
-    .s-numerique          { --card-accent: #3B82F6; }
-    .s-sante              { --card-accent: #F43F5E; }
-    .s-autre              { --card-accent: #14B8A6; }
+    /* Color vars per sector */
+    .s-industrie { --card-accent: #6366F1; }
+    .s-agro { --card-accent: #F59E0B; }
+    .s-commerce { --card-accent: #EC4899; }
+    .s-services-personne { --card-accent: #10B981; }
+    .s-tourisme { --card-accent: #06B6D4; }
+    .s-btp { --card-accent: #F97316; }
+    .s-services { --card-accent: #8B5CF6; }
+    .s-agri { --card-accent: var(--green-dark); }
+    .s-numerique { --card-accent: var(--blue); }
 
-    /* Logo image (si URL renseignée en col E) */
-    .company-logo-img {
-      width: 48px;
-      height: 48px;
-      border-radius: 10px;
-      object-fit: contain;
-      background: #F8FAFC;
-      border: 1px solid var(--border);
-      flex-shrink: 0;
-      padding: 4px;
-    }
-
-    /* Logos initiales */
-    .logo-indigo  { background: #EEF2FF; color: #4F46E5; }
-    .logo-amber   { background: #FFFBEB; color: #D97706; }
-    .logo-pink    { background: #FDF2F8; color: #BE185D; }
+    /* Logo bg colors */
+    .logo-indigo { background: #EEF2FF; color: #4F46E5; }
+    .logo-amber { background: #FFFBEB; color: #D97706; }
+    .logo-pink { background: #FDF2F8; color: #BE185D; }
     .logo-emerald { background: #ECFDF5; color: #059669; }
-    .logo-cyan    { background: #ECFEFF; color: #0891B2; }
-    .logo-orange  { background: #FFF7ED; color: #C2410C; }
-    .logo-violet  { background: #F5F3FF; color: #7C3AED; }
-    .logo-lime    { background: #F7FEE7; color: #4D7C0F; }
-    .logo-blue    { background: #EFF6FF; color: #1D4ED8; }
-    .logo-rose    { background: #FFF1F2; color: #BE123C; }
-    .logo-teal    { background: #F0FDFA; color: #0F766E; }
+    .logo-cyan { background: #ECFEFF; color: #0891B2; }
+    .logo-orange { background: #FFF7ED; color: #C2410C; }
+    .logo-violet { background: #F5F3FF; color: #7C3AED; }
+    .logo-lime { background: #F7FEE7; color: #4D7C0F; }
+    .logo-blue { background: #EFF6FF; color: #1D4ED8; }
+    .logo-rose { background: #FFF1F2; color: #BE123C; }
+    .logo-teal { background: #F0FDFA; color: #0F766E; }
 
-    /* Fonds icônes secteur */
-    .sect-bg-indigo  { background: #EEF2FF; }
-    .sect-bg-amber   { background: #FFFBEB; }
-    .sect-bg-pink    { background: #FDF2F8; }
+    /* Sector icon backgrounds */
+    .sect-bg-indigo { background: #EEF2FF; }
+    .sect-bg-amber { background: #FFFBEB; }
+    .sect-bg-pink { background: #FDF2F8; }
     .sect-bg-emerald { background: #ECFDF5; }
-    .sect-bg-cyan    { background: #ECFEFF; }
-    .sect-bg-orange  { background: #FFF7ED; }
-    .sect-bg-violet  { background: #F5F3FF; }
-    .sect-bg-lime    { background: #F7FEE7; }
-    .sect-bg-blue    { background: #EFF6FF; }
-    .sect-bg-rose    { background: #FFF1F2; }
-    .sect-bg-teal    { background: #F0FDFA; }
+    .sect-bg-cyan { background: #ECFEFF; }
+    .sect-bg-orange { background: #FFF7ED; }
+    .sect-bg-violet { background: #F5F3FF; }
+    .sect-bg-lime { background: #F7FEE7; }
+    .sect-bg-blue { background: #EFF6FF; }
 
-    /* Masquage filtre */
+    /* hidden filter state */
     .sector-section.hidden { display: none; }
-
-    /* ===== ÉTAT CHARGEMENT ===== */
-    .loading-state {
-      text-align: center;
-      padding: 80px 24px;
-      color: var(--text-light);
-    }
-    .loading-spinner {
-      width: 48px; height: 48px;
-      border: 4px solid var(--border);
-      border-top-color: var(--teal);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin: 0 auto 20px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .loading-state p {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 16px;
-    }
-    .error-state {
-      max-width: 480px;
-      margin: 80px auto;
-      text-align: center;
-      padding: 40px 32px;
-      background: #FFF1F2;
-      border: 2px solid #FECDD3;
-      border-radius: 16px;
-    }
-    .error-state .error-icon { font-size: 48px; margin-bottom: 16px; }
-    .error-state h3 {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 18px;
-      color: var(--dark);
-      margin-bottom: 8px;
-    }
-    .error-state p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
-
-    /* Barre de recherche */
-    .search-bar-wrap {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 24px 24px 0;
-    }
-    .search-input {
-      width: 100%;
-      padding: 12px 18px 12px 44px;
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      font-family: var(--font-display);
-      font-size: 15px;
-      color: var(--dark);
-      background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat 14px center;
-      transition: border-color 0.2s;
-      box-sizing: border-box;
-    }
-    .search-input:focus {
-      outline: none;
-      border-color: var(--teal);
-    }
-    .no-results {
-      text-align: center;
-      padding: 60px 24px;
-      color: var(--text-light);
-      display: none;
-    }
-    .no-results .nr-icon { font-size: 40px; margin-bottom: 12px; }
-    .no-results p { font-family: var(--font-display); font-weight: 600; }
 
     @media (max-width: 640px) {
       .companies-grid { grid-template-columns: 1fr; }
@@ -444,16 +351,16 @@
   <p>Consultez les entreprises présentes et accédez directement à leurs offres</p>
   <div class="offres-counter">
     <div class="offres-counter-item">
-      <strong id="count-entreprises">—</strong>
+      <strong>30+</strong>
       <span>Entreprises</span>
     </div>
     <div class="offres-counter-item">
-      <strong id="count-secteurs">—</strong>
-      <span>Secteurs</span>
+      <strong>100+</strong>
+      <span>Offres</span>
     </div>
     <div class="offres-counter-item">
-      <strong id="count-annee">—</strong>
-      <span>Édition</span>
+      <strong>9</strong>
+      <span>Secteurs</span>
     </div>
     <div class="offres-counter-item">
       <strong>22 avr.</strong>
@@ -469,44 +376,1066 @@
 
 <!-- FILTER BAR -->
 <div class="filter-bar">
-  <div class="filter-inner" id="filter-inner">
-    <!-- Généré dynamiquement par JS -->
-    <button class="filter-btn active" data-filter="all">🏢 Chargement…</button>
+  <div class="filter-inner">
+    <button class="filter-btn active" data-filter="all">🏢 Tous les secteurs <span class="count">30+</span></button>
+    <button class="filter-btn" data-filter="industrie">🏭 Industrie <span class="count">10</span></button>
+    <button class="filter-btn" data-filter="agro">🥩 Agroalimentaire <span class="count">7</span></button>
+    <button class="filter-btn" data-filter="commerce">🛒 Commerce <span class="count">3</span></button>
+    <button class="filter-btn" data-filter="btp">🏗️ BTP & artisanat <span class="count">6</span></button>
+    <button class="filter-btn" data-filter="services">💼 Services tertiaires <span class="count">6</span></button>
+    <button class="filter-btn" data-filter="services-personne">🤝 Services à la personne <span class="count">2</span></button>
+    <button class="filter-btn" data-filter="tourisme">🏖️ Tourisme <span class="count">2</span></button>
+    <button class="filter-btn" data-filter="agri">🌱 Agriculture <span class="count">3</span></button>
+    <button class="filter-btn" data-filter="numerique">💻 Numérique <span class="count">3</span></button>
   </div>
 </div>
 
-<!-- BARRE DE RECHERCHE -->
-<div class="search-bar-wrap">
-  <input
-    type="search"
-    class="search-input"
-    id="search-input"
-    placeholder="Rechercher une entreprise…"
-    autocomplete="off"
-  >
-</div>
-<div class="no-results" id="no-results">
-  <div class="nr-icon">🔍</div>
-  <p>Aucune entreprise ne correspond à votre recherche.</p>
-</div>
-
-<!-- CONTAINER DYNAMIQUE -->
-<div id="sectors-container">
-  <div class="loading-state">
-    <div class="loading-spinner"></div>
-    <p>Chargement des entreprises…</p>
+<!-- ===== INDUSTRIE ===== -->
+<section class="sector-section" data-sector="industrie">
+  <div class="sector-title">
+    <div class="sector-title-icon sect-bg-indigo">🏭</div>
+    <h2>Industrie</h2>
+    <span class="nb">10 entreprises</span>
   </div>
-</div>
+  <div class="companies-grid">
+
+    <div class="company-card s-industrie">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-indigo">TC</div>
+        <div class="company-info">
+          <div class="company-name">TECHCI Rhône-Alpes</div>
+          <span class="company-sector-tag">🏭 Industrie</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            ZI de la Baronnie, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 PME industrielle</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Circuits imprimés</span>
+        <a href="https://www.google.com/search?q=%22TECHCI+Rh%C3%B4ne-Alpes%22&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-industrie">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-indigo">CL</div>
+        <div class="company-info">
+          <div class="company-name">COOP Laitière de Yenne</div>
+          <span class="company-sector-tag">🏭 Industrie</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Yenne, Savoie
+          </div>
+          <div class="company-effectif">👥 Coopérative agricole</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Produits laitiers</span>
+        <a href="https://www.google.com/search?q=%22COOP+Laitière+de+Yenne%22&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-industrie">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-indigo">MG</div>
+        <div class="company-info">
+          <div class="company-name">MG 2 A</div>
+          <span class="company-sector-tag">🏭 Industrie</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            ZI de la Baronnie, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 Industrie / métallurgie</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Métallurgie</span>
+        <a href="https://www.google.com/search?q=%22MG+2+A%22+Pont-de-Beauvoisin&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-industrie">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-indigo">C2</div>
+        <div class="company-info">
+          <div class="company-name">C2PIC</div>
+          <span class="company-sector-tag">🏭 Industrie</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Espace Savoyard, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 3 à 5 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Bureau d'études</span>
+        <a href="https://www.google.com/search?q=%22C2PIC%22+Pont-de-Beauvoisin&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-industrie">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-indigo">CH</div>
+        <div class="company-info">
+          <div class="company-name">Chromology</div>
+          <span class="company-sector-tag">🏭 Industrie</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Savoie / Auvergne-Rhône-Alpes
+          </div>
+          <div class="company-effectif">👥 Plusieurs centaines (groupe)</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Peintures</span>
+        <a href="https://www.google.com/search?q=%22Chromology%22&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-industrie">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-indigo">PP</div>
+        <div class="company-info">
+          <div class="company-name">Placoplatre</div>
+          <span class="company-sector-tag">🏭 Industrie</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Site Savoie
+          </div>
+          <div class="company-effectif">👥 Plusieurs centaines</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Matériaux bâtiment</span>
+        <a href="https://www.google.com/search?q=%22Placoplatre%22+Savoie&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-industrie">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-indigo">GS</div>
+        <div class="company-info">
+          <div class="company-name">Grid Solutions</div>
+          <span class="company-sector-tag">🏭 Industrie</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Site industriel Savoie
+          </div>
+          <div class="company-effectif">👥 Groupe international</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Énergie haute tension</span>
+        <a href="https://www.google.com/search?q=%22Grid+Solutions%22+Savoie&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-industrie">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-indigo">AD</div>
+        <div class="company-info">
+          <div class="company-name">Armonia Déco</div>
+          <span class="company-sector-tag">🏭 Industrie</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            ZI de la Baronnie, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 TPE &lt; 10 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Meubles / Déco</span>
+        <a href="https://www.google.com/search?q=%22Armonia+D%C3%A9co%22+Pont-de-Beauvoisin&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-industrie">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-indigo">SF</div>
+        <div class="company-info">
+          <div class="company-name">SO Factory</div>
+          <span class="company-sector-tag">🏭 Industrie</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            ZI de la Baronnie, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 PME</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Mobilier BtoB</span>
+        <a href="https://www.google.com/search?q=%22SO+Factory%22+Pont-de-Beauvoisin&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-industrie">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-indigo">BS</div>
+        <div class="company-info">
+          <div class="company-name">Bluesup</div>
+          <span class="company-sector-tag">🏭 Industrie</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            ZI de la Baronnie, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 Groupe / Holding</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Holding groupe</span>
+        <a href="https://www.google.com/search?q=%22Bluesup%22+Pont-de-Beauvoisin&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /companies-grid -->
+</section>
+
+<!-- ===== AGROALIMENTAIRE ===== -->
+<section class="sector-section" data-sector="agro" style="background:var(--bg-light);padding-top:56px;padding-bottom:56px;">
+  <div class="sector-title" style="max-width:1140px;margin:0 auto 28px;">
+    <div class="sector-title-icon sect-bg-amber">🥩</div>
+    <h2>Industrie agroalimentaire</h2>
+    <span class="nb">7 entreprises</span>
+  </div>
+  <div class="companies-grid">
+
+    <div class="company-card s-agro">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-amber">JA</div>
+        <div class="company-info">
+          <div class="company-name">Jambon d'Aoste – AOSTE SNC</div>
+          <span class="company-sector-tag">🥩 Agroalimentaire</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Aoste, Isère (38490)
+          </div>
+          <div class="company-effectif">👥 1 000 à 1 999 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Charcuterie</span>
+        <a href="https://www.google.com/search?q=%22Jambon+d%27Aoste%22+AOSTE&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-agro">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-amber">CF</div>
+        <div class="company-info">
+          <div class="company-name">Cafés Folliet</div>
+          <span class="company-sector-tag">🥩 Agroalimentaire</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Savoie
+          </div>
+          <div class="company-effectif">👥 PME importante</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Torréfaction café</span>
+        <a href="https://www.google.com/search?q=%22Cafés+Folliet%22&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-agro">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-amber">CÉ</div>
+        <div class="company-info">
+          <div class="company-name">Cémoi Confiseur</div>
+          <span class="company-sector-tag">🥩 Agroalimentaire</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Savoie
+          </div>
+          <div class="company-effectif">👥 Plusieurs centaines (groupe)</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Chocolat & confiserie</span>
+        <a href="https://www.google.com/search?q=%22Cémoi%22+Savoie&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-agro">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-amber">AS</div>
+        <div class="company-info">
+          <div class="company-name">Alpina Savoie</div>
+          <span class="company-sector-tag">🥩 Agroalimentaire</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Savoie
+          </div>
+          <div class="company-effectif">👥 Quelques centaines</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Pâtes alimentaires</span>
+        <a href="https://www.google.com/search?q=%22Alpina+Savoie%22&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-agro">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-amber">PB</div>
+        <div class="company-info">
+          <div class="company-name">Le Pain de Belledonne</div>
+          <span class="company-sector-tag">🥩 Agroalimentaire</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Savoie
+          </div>
+          <div class="company-effectif">👥 PME</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Boulangerie bio</span>
+        <a href="https://www.google.com/search?q=%22Le+Pain+de+Belledonne%22&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-agro">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-amber">RO</div>
+        <div class="company-info">
+          <div class="company-name">Routin (sirops)</div>
+          <span class="company-sector-tag">🥩 Agroalimentaire</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Savoie
+          </div>
+          <div class="company-effectif">👥 PME</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Sirops & boissons</span>
+        <a href="https://www.google.com/search?q=%22Routin%22+sirops+Savoie&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-agro">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-amber">HA</div>
+        <div class="company-info">
+          <div class="company-name">Hafner Savoie</div>
+          <span class="company-sector-tag">🥩 Agroalimentaire</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Savoie
+          </div>
+          <div class="company-effectif">👥 PME industrielle</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Pâtisserie industrielle</span>
+        <a href="https://www.google.com/search?q=%22Hafner+Savoie%22&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== COMMERCE ===== -->
+<section class="sector-section" data-sector="commerce">
+  <div class="sector-title">
+    <div class="sector-title-icon sect-bg-pink">🛒</div>
+    <h2>Commerce / Grande distribution</h2>
+    <span class="nb">3 entreprises</span>
+  </div>
+  <div class="companies-grid">
+
+    <div class="company-card s-commerce">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-pink">HU</div>
+        <div class="company-info">
+          <div class="company-name">Hyper U</div>
+          <span class="company-sector-tag">🛒 Commerce</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 100 à 199 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Hypermarché</span>
+        <a href="https://www.google.com/search?q=%22Hyper+U%22+Pont-de-Beauvoisin&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-commerce">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-pink">IT</div>
+        <div class="company-info">
+          <div class="company-name">Intermarché</div>
+          <span class="company-sector-tag">🛒 Commerce</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Avant-Pays Savoyard (Yenne, Novalaise)
+          </div>
+          <div class="company-effectif">👥 Quelques dizaines / magasin</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Supermarché</span>
+        <a href="https://www.google.com/search?q=%22Intermarché%22+Yenne+Savoie&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-commerce">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-pink">ZC</div>
+        <div class="company-info">
+          <div class="company-name">Zone Commerciale de la Baronnie</div>
+          <span class="company-sector-tag">🛒 Commerce</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            ZAC de la Baronnie, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 Plusieurs centaines cumulés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Pôle commercial</span>
+        <a href="https://www.google.com/search?q=%22Zone+Commerciale+Baronnie%22+Pont-de-Beauvoisin&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== BTP ===== -->
+<section class="sector-section" data-sector="btp" style="background:var(--bg-light);padding-top:56px;padding-bottom:56px;">
+  <div class="sector-title" style="max-width:1140px;margin:0 auto 28px;">
+    <div class="sector-title-icon sect-bg-orange">🏗️</div>
+    <h2>BTP et artisanat</h2>
+    <span class="nb">6 entreprises</span>
+  </div>
+  <div class="companies-grid">
+
+    <div class="company-card s-btp">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-orange">CP</div>
+        <div class="company-info">
+          <div class="company-name">CINAR 2 PONTS</div>
+          <span class="company-sector-tag">🏗️ BTP</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            22 Rue de l'Hôtel de Ville, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 3 à 5 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Plâtrerie / finitions</span>
+        <a href="https://www.google.com/search?q=%22CINAR+2+PONTS%22&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-btp">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-orange">AP</div>
+        <div class="company-info">
+          <div class="company-name">AVANT PAYSAGE SAVOYARD</div>
+          <span class="company-sector-tag">🏗️ BTP</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            8 Place Carouge, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 3 à 5 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Aménagement paysager</span>
+        <a href="https://www.google.com/search?q=%22AVANT+PAYSAGE+SAVOYARD%22&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-btp">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-orange">EC</div>
+        <div class="company-info">
+          <div class="company-name">ESPACE CRÉATIF</div>
+          <span class="company-sector-tag">🏗️ BTP</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            30 Rue Porte de la Ville, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 1 à 2 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Économiste construction</span>
+        <a href="https://www.google.com/search?q=%22ESPACE+CREATIF%22+Pont-de-Beauvoisin&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-btp">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-orange">LI</div>
+        <div class="company-info">
+          <div class="company-name">LIBRA</div>
+          <span class="company-sector-tag">🏗️ BTP</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            30 Rue Porte de la Ville, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 1 à 2 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Chiffrage BTP</span>
+        <a href="https://www.google.com/search?q=%22LIBRA%22+%C3%A9conomiste+construction+Pont-de-Beauvoisin&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-btp">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-orange">IG</div>
+        <div class="company-info">
+          <div class="company-name">ISAGEO</div>
+          <span class="company-sector-tag">🏗️ BTP</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            5 Rue de Perouze, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 6 à 9 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Géomètres-experts</span>
+        <a href="https://www.google.com/search?q=%22ISAGEO%22+Pont-de-Beauvoisin&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-btp">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-orange">A7</div>
+        <div class="company-info">
+          <div class="company-name">ASTP 73</div>
+          <span class="company-sector-tag">🏗️ BTP</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Chambéry / Avant-Pays Savoyard
+          </div>
+          <div class="company-effectif">👥 10 à 19 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Terrassement / maçonnerie</span>
+        <a href="https://www.google.com/search?q=%22ASTP+73%22+BTP+Savoie&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== SERVICES TERTIAIRES ===== -->
+<section class="sector-section" data-sector="services">
+  <div class="sector-title">
+    <div class="sector-title-icon sect-bg-violet">💼</div>
+    <h2>Services et services tertiaires</h2>
+    <span class="nb">6 entreprises</span>
+  </div>
+  <div class="companies-grid">
+
+    <div class="company-card s-services">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-violet">AB</div>
+        <div class="company-info">
+          <div class="company-name">ABC Comptabilité</div>
+          <span class="company-sector-tag">💼 Services</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            ZI Baronnie, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 3 à 5 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Expertise comptable</span>
+        <a href="https://www.google.com/search?q=%22ABC+Comptabilité%22+Pont-de-Beauvoisin&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-services">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-violet">AN</div>
+        <div class="company-info">
+          <div class="company-name">Agence du Nivolet</div>
+          <span class="company-sector-tag">💼 Services</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            10 Place Carouge, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 1 à 2 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Immobilier</span>
+        <a href="https://www.google.com/search?q=%22Agence+du+Nivolet%22+Pont-de-Beauvoisin&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-services">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-violet">GN</div>
+        <div class="company-info">
+          <div class="company-name">GNB Beauvoisin – Alain Afflelou</div>
+          <span class="company-sector-tag">💼 Services</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Espace Baronnie, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 1 à 2 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Optique</span>
+        <a href="https://www.google.com/search?q=%22GNB+Beauvoisin%22+Alain+Afflelou&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-services">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-violet">AC</div>
+        <div class="company-info">
+          <div class="company-name">Assurances Carrier Videlier</div>
+          <span class="company-sector-tag">💼 Services</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 1 à 2 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Assurances</span>
+        <a href="https://www.google.com/search?q=%22Assurances+Carrier+Videlier%22&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-services">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-violet">AR</div>
+        <div class="company-info">
+          <div class="company-name">ARITEM Consulting</div>
+          <span class="company-sector-tag">💼 Services</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 TPE &lt; 5 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Conseil & management</span>
+        <a href="https://www.google.com/search?q=%22ARITEM+CONSULTING%22+Pont-de-Beauvoisin&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-services">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-violet">EC</div>
+        <div class="company-info">
+          <div class="company-name">Cabinets comptables & ingénierie</div>
+          <span class="company-sector-tag">💼 Services</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Pont-de-Beauvoisin & Yenne
+          </div>
+          <div class="company-effectif">👥 1 à 10 salariés / cabinet</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Services aux entreprises</span>
+        <a href="https://www.google.com/search?q=cabinet+comptable+ingénierie+Pont-de-Beauvoisin&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== SERVICES À LA PERSONNE ===== -->
+<section class="sector-section" data-sector="services-personne" style="background:var(--bg-light);padding-top:56px;padding-bottom:56px;">
+  <div class="sector-title" style="max-width:1140px;margin:0 auto 28px;">
+    <div class="sector-title-icon sect-bg-emerald">🤝</div>
+    <h2>Services à la personne / Médico-social</h2>
+    <span class="nb">2 entreprises</span>
+  </div>
+  <div class="companies-grid">
+
+    <div class="company-card s-services-personne">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-emerald">AD</div>
+        <div class="company-info">
+          <div class="company-name">Association ADMR</div>
+          <span class="company-sector-tag">🤝 Services à la personne</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Avant-Pays Savoyard (réseau local)
+          </div>
+          <div class="company-effectif">👥 Quelques dizaines à 100+</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Aide à domicile</span>
+        <a href="https://www.google.com/search?q=%22ADMR%22+Avant-Pays+Savoyard&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-services-personne">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-emerald">EH</div>
+        <div class="company-info">
+          <div class="company-name">EHPAD locaux</div>
+          <span class="company-sector-tag">🤝 Services à la personne</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Yenne, Novalaise et communes voisines
+          </div>
+          <div class="company-effectif">👥 Quelques dizaines / établissement</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Médico-social</span>
+        <a href="https://www.google.com/search?q=EHPAD+Yenne+Novalaise+emploi&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== TOURISME ===== -->
+<section class="sector-section" data-sector="tourisme">
+  <div class="sector-title">
+    <div class="sector-title-icon sect-bg-cyan">🏖️</div>
+    <h2>Tourisme et loisirs</h2>
+    <span class="nb">2 entreprises</span>
+  </div>
+  <div class="companies-grid">
+
+    <div class="company-card s-tourisme">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-cyan">TA</div>
+        <div class="company-info">
+          <div class="company-name">Tourisme Avant-Pays Savoyard</div>
+          <span class="company-sector-tag">🏖️ Tourisme</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Base aviron, Novalaise (73470)
+          </div>
+          <div class="company-effectif">👥 Petite équipe</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Office de tourisme</span>
+        <a href="https://www.google.com/search?q=%22Tourisme+Avant-Pays+Savoyard%22&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-tourisme">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-cyan">BA</div>
+        <div class="company-info">
+          <div class="company-name">Base d'aviron – Lac d'Aiguebelette</div>
+          <span class="company-sector-tag">🏖️ Tourisme</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Base aviron, Novalaise (73470)
+          </div>
+          <div class="company-effectif">👥 Saisonnier + permanent</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Sports nautiques</span>
+        <a href="https://www.google.com/search?q=%22Base+aviron+Lac+Aiguebelette%22&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== AGRICULTURE ===== -->
+<section class="sector-section" data-sector="agri" style="background:var(--bg-light);padding-top:56px;padding-bottom:56px;">
+  <div class="sector-title" style="max-width:1140px;margin:0 auto 28px;">
+    <div class="sector-title-icon sect-bg-lime">🌱</div>
+    <h2>Agriculture et environnement</h2>
+    <span class="nb">3 structures</span>
+  </div>
+  <div class="companies-grid">
+
+    <div class="company-card s-agri">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-lime">MA</div>
+        <div class="company-info">
+          <div class="company-name">Maison des Agriculteurs</div>
+          <span class="company-sector-tag">🌱 Agriculture</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Novalaise, Avant-Pays Savoyard
+          </div>
+          <div class="company-effectif">👥 Quelques conseillers</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Appui agricole</span>
+        <a href="https://www.google.com/search?q=%22Maison+des+Agriculteurs%22+Avant-Pays+Savoyard&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-agri">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-lime">AG</div>
+        <div class="company-info">
+          <div class="company-name">Exploitations agricoles locales</div>
+          <span class="company-sector-tag">🌱 Agriculture</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Communes rurales de l'Avant-Pays
+          </div>
+          <div class="company-effectif">👥 Unités familiales (1 à 3 UTH)</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Élevage bovin / lait</span>
+        <a href="https://www.google.com/search?q=exploitation+agricole+élevage+Avant-Pays+Savoyard+emploi&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-agri">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-lime">N2</div>
+        <div class="company-info">
+          <div class="company-name">Natura 2000 – Avant-Pays Savoyard</div>
+          <span class="company-sector-tag">🌱 Environnement</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Avant-Pays Savoyard
+          </div>
+          <div class="company-effectif">👥 Équipe technique + partenaires</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Biodiversité</span>
+        <a href="https://www.google.com/search?q=%22Natura+2000%22+Avant-Pays+Savoyard+emploi&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== NUMÉRIQUE ===== -->
+<section class="sector-section" data-sector="numerique" style="padding-bottom:80px;">
+  <div class="sector-title">
+    <div class="sector-title-icon sect-bg-blue">💻</div>
+    <h2>Numérique et Tech</h2>
+    <span class="nb">3 entreprises</span>
+  </div>
+  <div class="companies-grid">
+
+    <div class="company-card s-numerique">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-blue">ND</div>
+        <div class="company-info">
+          <div class="company-name">NEW-DATA</div>
+          <span class="company-sector-tag">💻 Numérique</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            ZI Baronnie Centre, Le Pont-de-Beauvoisin
+          </div>
+          <div class="company-effectif">👥 6 à 9 salariés</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Matériel informatique</span>
+        <a href="https://www.google.com/search?q=%22NEW-DATA%22+Pont-de-Beauvoisin&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-numerique">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-blue">BM</div>
+        <div class="company-info">
+          <div class="company-name">Brunier Maxime – Informatique</div>
+          <span class="company-sector-tag">💻 Numérique</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Yenne, Avant-Pays Savoyard
+          </div>
+          <div class="company-effectif">👥 Entreprise individuelle</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Dépannage informatique</span>
+        <a href="https://www.google.com/search?q=%22Brunier+Maxime%22+informatique+Yenne&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+    <div class="company-card s-numerique">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="company-logo logo-blue">EN</div>
+        <div class="company-info">
+          <div class="company-name">Entreprises numériques Savoie</div>
+          <span class="company-sector-tag">💻 Numérique</span>
+          <div class="company-location">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            Savoie – Avant-Pays Savoyard
+          </div>
+          <div class="company-effectif">👥 TPE à PME (secteur)</div>
+        </div>
+      </div>
+      <div class="company-footer">
+        <span class="company-tag">Dev logiciel / IT</span>
+        <a href="https://www.google.com/search?q=entreprise+numérique+informatique+Savoie+emploi&hl=fr&udm=8&jbr=sep:0" target="_blank" rel="noopener" class="btn-offres">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          Voir les offres
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-col">
-      <div class="footer-logo">
-        <span class="logo-box" style="font-size:13px;padding:4px 10px;">EN AVANT</span>
-        <span class="logo-text" style="font-size:15px;">L'EMPLOI</span>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-box">EN AVANT</span>
+        <span class="logo-text">L'EMPLOI</span>
+      </a>
+      <p class="footer-desc">3ème édition – Un événement porté par les acteurs locaux de l'Avant-Pays Savoyard</p>
+      <div class="footer-meta">
+        <div class="footer-meta-item">📅 Mercredi 22 avril 2026</div>
+        <div class="footer-meta-item">🕐 14h – 17h</div>
+        <div class="footer-meta-item">📍 Salle Jean Bouchard, Saint-Genix-les-Villages</div>
       </div>
-      <p class="footer-desc">Forum emploi de l'Avant-Pays Savoyard — Découverte, recrutement, formation et démonstration de métiers.</p>
     </div>
     <div class="footer-col">
       <h4>Navigation</h4>
@@ -522,297 +1451,56 @@
     <div class="footer-col">
       <h4>Contact</h4>
       <div class="footer-contact">
-        <div class="footer-contact-item">✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d5b6babba1b4b6a195b0bbb4a3b4bba1b9b0b8a5b9babcfbb3a7">[email&#160;protected]</a></div>
-        <div class="footer-contact-item">📞 04 XX XX XX XX</div>
+        <div class="footer-contact-item">👤 Émilie Chappaz</div>
+        <div class="footer-contact-item">📞 <a href="tel:+33476315188" style="color:rgba(255,255,255,0.8);text-decoration:none;">04 76 31 51 88</a></div>
+        <div class="footer-contact-item" style="font-size:13px;color:rgba(255,255,255,0.6);">11 Rue du 8 Mai 1945<br>73240 Saint-Genix-les-Villages</div>
       </div>
     </div>
-  </div>
+    </div>
   <div class="footer-bottom">
     <p class="footer-partners-text">Un événement porté par : CCLA • Val Guiers • AEL • CC de Yenne • Info Jeunes • Mission Locale Jeunes • France Travail • Région Auvergne-Rhône-Alpes • Auvergne-Rhône-Alpes Entreprises</p>
-    <p class="footer-copy">© <span id="footer-year"></span> EN AVANT L'EMPLOI. Tous droits réservés.</p>
+    <p class="footer-copy">© 2026 EN AVANT L'EMPLOI – 3ème édition. Tous droits réservés.</p>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="nav.js"></script>
-<script>
-// ================================================================
-//  ⚙️  CONFIGURATION
-// ================================================================
-const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQkSjf82f9qW477lg0foHbjt6aVDevsq7T5yCKsIyHP9lm44qAqO-EXq-OEn32eYNoEWuW0pzfaoX5C/pub?output=csv';
-// ================================================================
-
-// Affiche l'année dans le footer et le compteur
-const ANNEE = new Date().getFullYear();
-document.getElementById('footer-year').textContent = ANNEE;
-document.getElementById('count-annee').textContent = ANNEE;
-
-// ================================================================
-//  CONFIGURATION DES SECTEURS
-//  Colonne C du Sheet → clé CSS + icône + couleur
-// ================================================================
-const SECTORS = {
-  'Industrie':             { key: 's-industrie',         icon: '🏭', logo: 'logo-indigo',  sectBg: 'sect-bg-indigo'  },
-  'Agro-alimentaire':      { key: 's-agro',              icon: '🥩', logo: 'logo-amber',   sectBg: 'sect-bg-amber'   },
-  'Commerce':              { key: 's-commerce',          icon: '🛒', logo: 'logo-pink',    sectBg: 'sect-bg-pink'    },
-  'BTP':                   { key: 's-btp',               icon: '🏗️', logo: 'logo-orange',  sectBg: 'sect-bg-orange'  },
-  'Services':              { key: 's-services',          icon: '💼', logo: 'logo-violet',  sectBg: 'sect-bg-violet'  },
-  'Services à la personne':{ key: 's-services-personne', icon: '🤝', logo: 'logo-emerald', sectBg: 'sect-bg-emerald' },
-  'Tourisme':              { key: 's-tourisme',          icon: '🏖️', logo: 'logo-cyan',    sectBg: 'sect-bg-cyan'    },
-  'Agriculture':           { key: 's-agri',              icon: '🌱', logo: 'logo-lime',    sectBg: 'sect-bg-lime'    },
-  'Technologie':           { key: 's-numerique',         icon: '💻', logo: 'logo-blue',    sectBg: 'sect-bg-blue'    },
-  'Santé':                 { key: 's-sante',             icon: '🏥', logo: 'logo-rose',    sectBg: 'sect-bg-rose'    },
-  'Autre':                 { key: 's-autre',             icon: '🏢', logo: 'logo-teal',    sectBg: 'sect-bg-teal'    },
-};
-
-// ================================================================
-//  PARSEUR CSV robuste (gère les virgules et guillemets dans les champs)
-// ================================================================
-function parseCSV(text) {
-  const rows = [];
-  const lines = text.split(/\r?\n/);
-  // Ligne 0 = en-têtes, on commence à 1
-  for (let i = 1; i < lines.length; i++) {
-    const line = lines[i].trim();
-    if (!line) continue;
-    const cols = splitCSVLine(line);
-    const nom = (cols[0] || '').trim();
-    if (!nom) continue;
-    rows.push({
-      nom:      nom,
-      adresse:  (cols[1] || '').trim(),
-      secteur:  (cols[2] || '').trim() || 'Autre',
-      activite: (cols[3] || '').trim(),
-      logo:     (cols[4] || '').trim(),   // colonne E : URL du logo
-      carriere: (cols[5] || '').trim(),   // colonne F : page carrière
-    });
-  }
-  return rows;
-}
-
-function splitCSVLine(line) {
-  const result = [];
-  let cur = '';
-  let inQuote = false;
-  for (let i = 0; i < line.length; i++) {
-    const ch = line[i];
-    if (ch === '"') {
-      if (inQuote && line[i + 1] === '"') { cur += '"'; i++; }
-      else { inQuote = !inQuote; }
-    } else if (ch === ',' && !inQuote) {
-      result.push(cur);
-      cur = '';
-    } else {
-      cur += ch;
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+// ===== HASH-BASED FILTER ACTIVATION =====
+function activateFilterFromHash() {
+  const hash = window.location.hash.replace('#', '');
+  if (hash) {
+    const btn = document.querySelector(\`.filter-btn[data-filter="\${hash}"]\`);
+    if (btn) {
+      btn.click();
+      // Scroll to filter bar
+      setTimeout(() => {
+        const filterBar = document.querySelector('.filter-bar');
+        if (filterBar) filterBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
     }
   }
-  result.push(cur);
-  return result;
 }
+document.addEventListener('DOMContentLoaded', activateFilterFromHash);
+</script><script>
+// Filter system
+const filterBtns = document.querySelectorAll('.filter-btn');
+const sectors = document.querySelectorAll('.sector-section');
 
-// ================================================================
-//  INITIALES automatiques (2 lettres max)
-// ================================================================
-function getInitials(name) {
-  const words = name.trim().split(/\s+/).filter(Boolean);
-  if (words.length === 1) return words[0].substring(0, 2).toUpperCase();
-  return (words[0][0] + words[1][0]).toUpperCase();
-}
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const filter = btn.dataset.filter;
 
-// ================================================================
-//  GÉNÉRATION D'UNE CARTE ENTREPRISE
-// ================================================================
-function buildCard(company, cfg) {
-  const initials  = getInitials(company.nom);
-  const searchUrl = `https://www.google.com/search?q=%22${encodeURIComponent(company.nom)}%22&hl=fr&udm=8&jbr=sep:0`;
-  const offreUrl  = company.carriere || searchUrl;
-  const secteurLabel = company.secteur || 'Autre';
+    // Update active button
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
 
-  // Logo : image si URL renseignée, sinon initiales colorées avec fallback
-  const logoHtml = company.logo
-    ? `<img
-         class="company-logo-img"
-         src="${escHtml(company.logo)}"
-         alt="Logo ${escHtml(company.nom)}"
-         loading="lazy"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-       ><div class="company-logo ${cfg.logo}" style="display:none">${initials}</div>`
-    : `<div class="company-logo ${cfg.logo}">${initials}</div>`;
-
-  return `
-    <div class="company-card ${cfg.key}" data-name="${company.nom.toLowerCase()}">
-      <div style="display:flex;gap:14px;align-items:flex-start;">
-        ${logoHtml}
-        <div class="company-info">
-          <div class="company-name">${escHtml(company.nom)}</div>
-          <span class="company-sector-tag">${cfg.icon} ${escHtml(secteurLabel)}</span>
-          ${company.adresse ? `
-          <div class="company-location">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z"/>
-              <circle cx="8" cy="6" r="1.5"/>
-            </svg>
-            ${escHtml(company.adresse)}
-          </div>` : ''}
-          ${company.activite ? `
-          <div class="company-effectif">
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="6" cy="5" r="2.5"/><circle cx="11" cy="5" r="2"/>
-              <path d="M1 13c0-2.76 2.24-5 5-5s5 2.24 5 5"/>
-              <path d="M11 8c1.66 0 3 1.34 3 3v1"/>
-            </svg>
-            ${escHtml(company.activite)}
-          </div>` : ''}
-        </div>
-      </div>
-      <div class="company-footer">
-        <span class="company-tag">${escHtml(secteurLabel)}</span>
-        <a href="${offreUrl}" target="_blank" rel="noopener" class="btn-offres">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 8h10M9 4l4 4-4 4"/>
-          </svg>
-          Voir les offres
-        </a>
-      </div>
-    </div>`;
-}
-
-function escHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-// ================================================================
-//  CONSTRUCTION DES SECTIONS PAR SECTEUR
-// ================================================================
-function buildPage(companies) {
-  // Regrouper par secteur
-  const bySector = {};
-  companies.forEach(c => {
-    const s = c.secteur || 'Autre';
-    if (!bySector[s]) bySector[s] = [];
-    bySector[s].push(c);
-  });
-
-  // Compteurs hero
-  document.getElementById('count-entreprises').textContent = companies.length;
-  document.getElementById('count-secteurs').textContent    = Object.keys(bySector).length;
-
-  // Barre de filtres
-  const filterInner = document.getElementById('filter-inner');
-  filterInner.innerHTML = `
-    <button class="filter-btn active" data-filter="all">
-      🏢 Tous les secteurs <span class="count">${companies.length}</span>
-    </button>`;
-
-  // Container
-  const container = document.getElementById('sectors-container');
-  container.innerHTML = '';
-
-  // Tri alphabétique des secteurs
-  const sortedSectors = Object.entries(bySector).sort(([a],[b]) => a.localeCompare(b, 'fr'));
-
-  sortedSectors.forEach(([sectorName, list]) => {
-    const cfg = SECTORS[sectorName] || SECTORS['Autre'];
-
-    // Bouton filtre
-    filterInner.innerHTML += `
-      <button class="filter-btn" data-filter="${cfg.key}">
-        ${cfg.icon} ${escHtml(sectorName)} <span class="count">${list.length}</span>
-      </button>`;
-
-    // Section
-    const section = document.createElement('section');
-    section.className   = 'sector-section';
-    section.dataset.sector = cfg.key;
-    section.innerHTML   = `
-      <div class="sector-title">
-        <div class="sector-title-icon ${cfg.sectBg}">${cfg.icon}</div>
-        <h2>${escHtml(sectorName)}</h2>
-        <span class="nb">${list.length} entreprise${list.length > 1 ? 's' : ''}</span>
-      </div>
-      <div class="companies-grid">
-        ${list.map(c => buildCard(c, cfg)).join('')}
-      </div>`;
-    container.appendChild(section);
-  });
-
-  // Rebind filtres secteurs
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const f = btn.dataset.filter;
-      document.querySelectorAll('.sector-section').forEach(s => {
-        s.classList.toggle('hidden', f !== 'all' && s.dataset.sector !== f);
-      });
-      // Reset recherche
-      document.getElementById('search-input').value = '';
-      showNoResults(false);
+    // Show/hide sectors
+    sectors.forEach(s => {
+      if (filter === 'all' || s.dataset.sector === filter) {
+        s.classList.remove('hidden');
+      } else {
+        s.classList.add('hidden');
+      }
     });
-  });
 
-  // Recherche texte
-  document.getElementById('search-input').addEventListener('input', function() {
-    const q = this.value.toLowerCase().trim();
-    let visibleCount = 0;
-    document.querySelectorAll('.company-card').forEach(card => {
-      const match = !q || card.dataset.name.includes(q);
-      card.style.display = match ? '' : 'none';
-      if (match) visibleCount++;
-    });
-    // Masquer sections vides lors de la recherche
-    document.querySelectorAll('.sector-section').forEach(s => {
-      const hasVisible = [...s.querySelectorAll('.company-card')].some(c => c.style.display !== 'none');
-      s.classList.toggle('hidden', !hasVisible);
-    });
-    showNoResults(visibleCount === 0 && q.length > 0);
-    // Reset filtre secteur actif visuellement
-    if (q) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    }
-  });
-}
-
-function showNoResults(show) {
-  document.getElementById('no-results').style.display = show ? 'block' : 'none';
-}
-
-// ================================================================
-//  CHARGEMENT DEPUIS GOOGLE SHEET
-// ================================================================
-async function loadFromSheet() {
-  const container = document.getElementById('sectors-container');
-
-  try {
-    const res = await fetch(CSV_URL);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const text    = await res.text();
-    const companies = parseCSV(text);
-
-    if (companies.length === 0) {
-      container.innerHTML = `
-        <div class="error-state">
-          <div class="error-icon">📭</div>
-          <h3>Aucune entreprise trouvée</h3>
-          <p>Le classeur Google Sheets est vide ou ne contient pas de données dans la colonne A.</p>
-        </div>`;
-      return;
-    }
-
-    buildPage(companies);
-
-  } catch (err) {
-    console.error('Erreur chargement Sheet :', err);
-    container.innerHTML = `
-      <div class="error-state">
-        <div class="error-icon">⚠️</div>
-        <h3>Impossible de charger les données</h3>
-        <p>Vérifiez que le classeur Google Sheets est bien <strong>publié sur le web</strong> (Fichier → Partager → Publier sur le web) et que l'ID est correct.</p>
-      </div>`;
-  }
-}
-
-document.addEventListener("DOMContentLoaded", loadFromSheet);
-document.addEventListener("DOMContentLoaded", () => { document.getElementById("count-annee").textContent = new Date().getFullYear(); });
-</script>
-</body>
-</html>
+    // Scroll to first visible section
+    const first = document.querySelector('.sector-section:
