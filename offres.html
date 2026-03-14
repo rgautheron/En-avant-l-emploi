@@ -499,14 +499,19 @@
 </div>
 
 <!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-col">
-      <div class="footer-logo">
-        <span class="logo-box" style="font-size:13px;padding:4px 10px;">EN AVANT</span>
-        <span class="logo-text" style="font-size:15px;">L'EMPLOI</span>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-box">EN AVANT</span>
+        <span class="logo-text">L'EMPLOI</span>
+      </a>
+      <p class="footer-desc">3ème édition – Un événement porté par les acteurs locaux de l'Avant-Pays Savoyard</p>
+      <div class="footer-meta">
+        <div class="footer-meta-item">📅 Mercredi 22 avril 2026</div>
+        <div class="footer-meta-item">🕐 14h – 17h</div>
+        <div class="footer-meta-item">📍 Salle Jean Bouchard, Saint-Genix-les-Villages</div>
       </div>
-      <p class="footer-desc">Forum emploi de l'Avant-Pays Savoyard — Découverte, recrutement, formation et démonstration de métiers.</p>
     </div>
     <div class="footer-col">
       <h4>Navigation</h4>
@@ -753,6 +758,19 @@ function buildPage(companies) {
     });
   });
 
+  // Activation filtre depuis hash URL (ex: offres.html#industrie)
+  const _hash = window.location.hash.replace('#', '');
+  if (_hash) {
+    const _btn = document.querySelector('.filter-btn[data-filter="' + _hash + '"]');
+    if (_btn) {
+      _btn.click();
+      setTimeout(() => {
+        const _bar = document.querySelector('.filter-bar');
+        if (_bar) _bar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+    }
+  }
+
   // Recherche texte
   document.getElementById('search-input').addEventListener('input', function() {
     const q = this.value.toLowerCase().trim();
@@ -816,21 +834,6 @@ async function loadFromSheet() {
 
 document.addEventListener("DOMContentLoaded", loadFromSheet);
 document.addEventListener("DOMContentLoaded", () => { document.getElementById("count-annee").textContent = new Date().getFullYear(); });
-
-// ===== FILTRE PAR HASH =====
-function activateFilterFromHash() {
-  const hash = window.location.hash.replace('#', '');
-  if (!hash) return;
-  const btn = document.querySelector('.filter-btn[data-filter="' + hash + '"]');
-  if (btn) {
-    btn.click();
-    setTimeout(() => {
-      const bar = document.querySelector('.filter-bar');
-      if (bar) bar.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 200);
-  }
-}
-document.addEventListener('DOMContentLoaded', activateFilterFromHash);
 </script>
 </body>
 </html>
