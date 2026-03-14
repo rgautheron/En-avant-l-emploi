@@ -10,7 +10,7 @@ function getActivePage() {
 
 function activeClass(page, link) {
   if (page === link) {
-    const map = { decouverte: 'active', recrutement: 'active-red', formation: 'active-green', demonstration: 'active-blue', accueil: 'active' };
+    const map = { decouverte: 'active', recrutement: 'active-red', formation: 'active-orange', demonstration: 'active-blue', accueil: 'active' };
     return map[page] || 'active';
   }
   return '';
@@ -29,12 +29,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile menu toggle
+  // ===== BURGER MENU =====
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobile-menu');
+
   if (burger && mobileMenu) {
-    burger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
+    burger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = mobileMenu.classList.toggle('open');
+      burger.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Fermer au clic sur un lien du menu
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        burger.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Fermer au clic en dehors
+    document.addEventListener('click', (e) => {
+      if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove('open');
+        burger.classList.remove('open');
+        document.body.style.overflow = '';
+      }
     });
   }
 });
@@ -47,33 +69,23 @@ function initParallax() {
   heroes.forEach(hero => {
     const bg = hero.querySelector('.parallax-bg');
     if (!bg) return;
-
     let ticking = false;
-
     const updateParallax = () => {
       const rect = hero.getBoundingClientRect();
       const heroH = hero.offsetHeight;
-      // How far the hero center is from the viewport center
       const viewportCenter = window.innerHeight / 2;
       const heroCenter = rect.top + heroH / 2;
       const offset = (heroCenter - viewportCenter) * 0.22;
       bg.style.transform = `translateY(${offset}px)`;
       ticking = false;
     };
-
     window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(updateParallax);
-        ticking = true;
-      }
+      if (!ticking) { requestAnimationFrame(updateParallax); ticking = true; }
     }, { passive: true });
-
-    // Initial position
     updateParallax();
   });
 }
 
-// Also handle the main hero (index.html)
 function initHeroParallax() {
   const hero = document.querySelector('.hero-parallax-bg');
   if (!hero) return;

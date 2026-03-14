@@ -7,7 +7,127 @@
   <meta name="description" content="Découvrez toutes les entreprises présentes et consultez leurs offres d'emploi lors de l'événement EN AVANT L'EMPLOI.">
   <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <style>
+
+    /* ===== CARTE LEAFLET ===== */
+    .map-toggle-bar {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 16px 24px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-map-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 10px;
+      border: 2px solid var(--teal);
+      background: white;
+      color: var(--teal);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-map-toggle:hover,
+    .btn-map-toggle.active {
+      background: var(--teal);
+      color: white;
+    }
+    .map-hint {
+      font-size: 13px;
+      color: var(--text-light);
+      font-style: italic;
+    }
+    .map-wrapper {
+      display: none;
+      max-width: 1140px;
+      margin: 16px auto 0;
+      padding: 0 24px;
+    }
+    .map-wrapper.open { display: block; }
+    #company-map {
+      width: 100%;
+      height: 480px;
+      border-radius: 16px;
+      border: 2px solid var(--border);
+      overflow: hidden;
+      z-index: 0;
+    }
+    /* Popup Leaflet custom */
+    .leaflet-popup-content-wrapper {
+      border-radius: 12px !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15) !important;
+      padding: 0 !important;
+      overflow: hidden;
+    }
+    .leaflet-popup-content {
+      margin: 0 !important;
+      width: 220px !important;
+    }
+    .map-popup {
+      padding: 16px;
+    }
+    .map-popup-logo {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 16px;
+      border: 2px solid rgba(0,0,0,0.06);
+      margin-bottom: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .map-popup-logo img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+    }
+    .map-popup-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--dark);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .map-popup-sector {
+      font-size: 11px;
+      color: var(--text-light);
+      font-family: var(--font-display);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 12px;
+    }
+    .map-popup-btn {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      background: var(--teal);
+      color: white;
+      text-align: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 12px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .map-popup-btn:hover { opacity: 0.85; }
+    .map-geocoding-status {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-top: 8px;
+      text-align: right;
+    }
+
     /* ===== PAGE OFFRES ===== */
     .offres-hero {
       background: linear-gradient(135deg, #1C2331 0%, #2D3748 100%);
@@ -435,8 +555,22 @@
       <li><a href="offres.html" style="color:var(--red);font-weight:700;border-bottom:2px solid var(--red);padding-bottom:2px;">Offres</a></li>
     </ul>
     <a href="index.html#inscription" class="btn-inscrit">S'inscrire</a>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MENU MOBILE -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" data-page="accueil">Accueil</a>
+  <a href="decouverte.html" data-page="decouverte">Découverte</a>
+  <a href="recrutement.html" data-page="recrutement">Recrutement</a>
+  <a href="formation.html" data-page="formation">Formation</a>
+  <a href="demonstration.html" data-page="demonstration">Démonstration</a>
+  <a href="offres.html" style="color:var(--red);font-weight:700;">Offres</a>
+  <a href="https://mesevenementsemploi.francetravail.fr/mes-evenements-emploi/evenement/619655/en-avant-l-emploi-saint-genix-les-villages" target="_blank" rel="noopener" class="btn-inscrit-mobile">S'inscrire gratuitement →</a>
+</div>
 
 <!-- HERO -->
 <div class="offres-hero">
@@ -465,6 +599,19 @@
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
   <a href="index.html">← Retour à l'accueil</a>
+</div>
+
+
+<!-- CARTE DES ENTREPRISES -->
+<div class="map-toggle-bar">
+  <button class="btn-map-toggle" id="btn-map-toggle" onclick="toggleMap()">
+    🗺️ Voir la carte des entreprises
+  </button>
+  <span class="map-hint" id="map-hint" style="display:none;">Clic sur un marqueur pour voir le détail</span>
+</div>
+<div class="map-wrapper" id="map-wrapper">
+  <div id="company-map"></div>
+  <div class="map-geocoding-status" id="geocoding-status"></div>
 </div>
 
 <!-- FILTER BAR -->
@@ -819,6 +966,7 @@ async function loadFromSheet() {
       return;
     }
 
+    allCompanies = companies;
     buildPage(companies);
 
   } catch (err) {
@@ -835,5 +983,146 @@ async function loadFromSheet() {
 document.addEventListener("DOMContentLoaded", loadFromSheet);
 document.addEventListener("DOMContentLoaded", () => { document.getElementById("count-annee").textContent = new Date().getFullYear(); });
 </script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// ================================================================
+//  CARTE LEAFLET
+// ================================================================
+let map = null;
+let mapInitialized = false;
+let allCompanies = [];
+
+// Couleurs des marqueurs par secteur (correspond aux couleurs CSS)
+const SECTOR_COLORS = {
+  'Industrie':              '#6366F1',
+  'Agro-alimentaire':       '#F59E0B',
+  'Commerce':               '#EC4899',
+  'BTP':                    '#F97316',
+  'Services':               '#8B5CF6',
+  'Services à la personne': '#10B981',
+  'Tourisme':               '#06B6D4',
+  'Agriculture':            '#65A30D',
+  'Technologie':            '#3B82F6',
+  'Santé':                  '#F43F5E',
+  'Autre':                  '#14B8A6',
+};
+
+function getSectorIcon(secteur) {
+  const color = SECTOR_COLORS[secteur] || '#14B8A6';
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 42'>
+    <path d='M16 0C7.16 0 0 7.16 0 16c0 10 16 26 16 26S32 26 32 16C32 7.16 24.84 0 16 0z' fill='${color}'/>
+    <circle cx='16' cy='16' r='7' fill='white'/>
+  </svg>`;
+  return L.divIcon({
+    html: svg,
+    className: '',
+    iconSize: [32, 42],
+    iconAnchor: [16, 42],
+    popupAnchor: [0, -44]
+  });
+}
+
+function getInitials(name) {
+  const words = name.trim().split(/\s+/).filter(Boolean);
+  if (words.length === 1) return words[0].substring(0, 2).toUpperCase();
+  return (words[0][0] + words[1][0]).toUpperCase();
+}
+
+function buildPopup(company) {
+  const color = SECTOR_COLORS[company.secteur] || '#14B8A6';
+  const initials = getInitials(company.nom);
+  const searchUrl = `https://www.google.com/search?q=%22${encodeURIComponent(company.nom)}%22&hl=fr&udm=8&jbr=sep:0`;
+  const offreUrl = company.carriere || searchUrl;
+  const logoHtml = company.logo
+    ? `<img src="${company.logo}" alt="${company.nom}" style="width:100%;height:100%;object-fit:contain;" onerror="this.parentElement.innerHTML='${initials}';this.parentElement.style.background='${color}20';this.parentElement.style.color='${color}';">`
+    : initials;
+  const logoBg = company.logo ? 'background:#f8fafc;' : `background:${color}20;color:${color};`;
+
+  return `<div class="map-popup">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <div class="map-popup-logo" style="${logoBg}">${logoHtml}</div>
+      <div>
+        <div class="map-popup-name">${company.nom}</div>
+        <div class="map-popup-sector">${company.secteur || 'Autre'}</div>
+      </div>
+    </div>
+    ${company.adresse ? `<div style="font-size:12px;color:#718096;margin-bottom:10px;">📍 ${company.adresse}</div>` : ''}
+    <a href="${offreUrl}" target="_blank" rel="noopener" class="map-popup-btn">Voir les offres →</a>
+  </div>`;
+}
+
+// Géocodage via Nominatim (avec file d'attente pour respecter le rate limit)
+async function geocodeAddress(address) {
+  if (!address) return null;
+  try {
+    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address + ', France')}&format=json&limit=1`;
+    const res = await fetch(url, { headers: { 'Accept-Language': 'fr' } });
+    const data = await res.json();
+    if (data && data.length > 0) {
+      return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+    }
+  } catch(e) {}
+  return null;
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+async function initMap(companies) {
+  if (mapInitialized) return;
+  mapInitialized = true;
+
+  // Centre sur l'Avant-Pays Savoyard
+  map = L.map('company-map').setView([45.6, 5.65], 11);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 18
+  }).addTo(map);
+
+  const statusEl = document.getElementById('geocoding-status');
+  let placed = 0;
+  const bounds = [];
+
+  for (let i = 0; i < companies.length; i++) {
+    const c = companies[i];
+    if (!c.adresse) continue;
+
+    statusEl.textContent = `Localisation des entreprises… ${i + 1}/${companies.length}`;
+    const coords = await geocodeAddress(c.adresse);
+    if (coords) {
+      const marker = L.marker([coords.lat, coords.lng], { icon: getSectorIcon(c.secteur) }).addTo(map);
+      marker.bindPopup(buildPopup(c), { maxWidth: 240 });
+      bounds.push([coords.lat, coords.lng]);
+      placed++;
+    }
+    await sleep(250); // respecter le rate limit Nominatim (max 4 req/s)
+  }
+
+  statusEl.textContent = placed > 0 ? `${placed} entreprise${placed > 1 ? 's' : ''} localisée${placed > 1 ? 's' : ''} sur la carte` : '';
+  if (bounds.length > 1) map.fitBounds(bounds, { padding: [40, 40] });
+}
+
+function toggleMap() {
+  const wrapper = document.getElementById('map-wrapper');
+  const btn = document.getElementById('btn-map-toggle');
+  const hint = document.getElementById('map-hint');
+  const isOpen = wrapper.classList.toggle('open');
+  btn.classList.toggle('active', isOpen);
+  btn.textContent = isOpen ? '✖ Fermer la carte' : '🗺️ Voir la carte des entreprises';
+  hint.style.display = isOpen ? 'inline' : 'none';
+
+  if (isOpen && !mapInitialized && allCompanies.length > 0) {
+    setTimeout(() => {
+      initMap(allCompanies);
+      if (map) map.invalidateSize();
+    }, 100);
+  }
+  if (isOpen && map) {
+    setTimeout(() => map.invalidateSize(), 200);
+  }
+}
+</script>
+
 </body>
 </html>

@@ -1003,6 +1003,87 @@ a.sector-card { text-decoration: none; color: inherit; display: flex; flex-direc
   line-height: 1.6;
 }
 
+
+/* ===== BURGER + MENU MOBILE ===== */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+  z-index: 110;
+}
+
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--dark);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animation croix */
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 64px;
+  left: 0; right: 0;
+  background: var(--white);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  z-index: 99;
+  padding: 16px 24px 24px;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
+  display: block;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: var(--teal); }
+.mobile-menu a.active { color: var(--teal); }
+.mobile-menu a.active-red { color: var(--red); }
+.mobile-menu a.active-orange { color: var(--orange-dark); }
+.mobile-menu a.active-blue { color: var(--blue); }
+
+.mobile-menu .btn-inscrit-mobile {
+  margin-top: 16px;
+  display: block;
+  text-align: center;
+  background: var(--red);
+  color: white;
+  padding: 13px;
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.mobile-menu .btn-inscrit-mobile:hover { background: #c9203b; }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .espaces-grid { grid-template-columns: 1fr; }
@@ -1019,6 +1100,8 @@ a.sector-card { text-decoration: none; color: inherit; display: flex; flex-direc
   .pourquoi-grid { grid-template-columns: 1fr; }
   .tips-grid { grid-template-columns: 1fr 1fr; }
   .nav-links { display: none; }
+  .burger { display: flex; }
+  .btn-inscrit { display: none; }
 }
 
 /* ===== ANIMATIONS ===== */
