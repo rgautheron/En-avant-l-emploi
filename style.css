@@ -324,12 +324,13 @@ section { padding: 80px 24px; }
   flex-direction: column;
   gap: 10px;
   min-height: 200px;
+  border: 1.5px solid rgba(255,255,255,0.5);
 }
 
-.espace-card.teal  { background: var(--teal); }
-.espace-card.red   { background: var(--red); }
-.espace-card.orange-c { background: var(--orange); }
-.espace-card.blue  { background: var(--blue); }
+.espace-card.teal     { background: linear-gradient(160deg, var(--teal) 0%, #e8faf8 100%); }
+.espace-card.red      { background: linear-gradient(160deg, var(--red) 0%, #fde8ec 100%); }
+.espace-card.orange-c { background: linear-gradient(160deg, var(--orange) 0%, #fff0e5 100%); }
+.espace-card.blue     { background: linear-gradient(160deg, var(--blue) 0%, #e8f4fe 100%); }
 
 .espace-card:hover {
   transform: translateY(-5px);
@@ -349,7 +350,7 @@ section { padding: 80px 24px; }
   border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
   font-size: 24px;
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.35);
   flex-shrink: 0;
 }
 
@@ -359,10 +360,11 @@ section { padding: 80px 24px; }
   font-size: 20px;
   color: white;
   line-height: 1.2;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 
 .espace-card p {
-  color: rgba(255,255,255,0.85);
+  color: var(--text);
   font-size: 14px;
   line-height: 1.55;
   flex: 1;
@@ -379,10 +381,16 @@ section { padding: 80px 24px; }
   font-size: 13px;
   color: var(--dark);
   align-self: flex-start;
-  transition: opacity 0.2s;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
-.espace-link:hover { opacity: 0.9; }
+.espace-link:hover { opacity: 0.9; transform: translateX(2px); }
+
+.espace-card.teal .espace-link  { color: var(--teal-dark); }
+.espace-card.red .espace-link   { color: var(--red); }
+.espace-card.orange-c .espace-link { color: var(--orange-dark); }
+.espace-card.blue .espace-link  { color: var(--blue-dark); }
 
 /* ===== POURQUOI ===== */
 .section-bg { background: var(--bg-light); }
