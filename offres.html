@@ -196,6 +196,7 @@
       gap: 4px;
       overflow-x: auto;
       padding: 12px 0;
+      padding-right: 24px;
       scrollbar-width: none;
     }
     .filter-inner::-webkit-scrollbar { display: none; }
@@ -419,6 +420,7 @@
     .s-agri               { --card-accent: #65A30D; }
     .s-numerique          { --card-accent: #3B82F6; }
     .s-sante              { --card-accent: #F43F5E; }
+    .s-transport          { --card-accent: #64748B; }
     .s-autre              { --card-accent: #14B8A6; }
 
     /* Logo image (si URL renseignée en col E) */
@@ -445,6 +447,7 @@
     .logo-blue    { background: #EFF6FF; color: #1D4ED8; }
     .logo-rose    { background: #FFF1F2; color: #BE123C; }
     .logo-teal    { background: #F0FDFA; color: #0F766E; }
+    .logo-slate   { background: #F1F5F9; color: #475569; }
 
     /* Fonds icônes secteur */
     .sect-bg-indigo  { background: #EEF2FF; }
@@ -458,6 +461,7 @@
     .sect-bg-blue    { background: #EFF6FF; }
     .sect-bg-rose    { background: #FFF1F2; }
     .sect-bg-teal    { background: #F0FDFA; }
+    .sect-bg-slate   { background: #F1F5F9; }
 
     /* Masquage filtre */
     .sector-section.hidden { display: none; }
@@ -714,6 +718,7 @@ const SECTORS = {
   'Agriculture':           { key: 's-agri',              icon: '🌱', logo: 'logo-lime',    sectBg: 'sect-bg-lime'    },
   'Technologie':           { key: 's-numerique',         icon: '💻', logo: 'logo-blue',    sectBg: 'sect-bg-blue'    },
   'Santé':                 { key: 's-sante',             icon: '🏥', logo: 'logo-rose',    sectBg: 'sect-bg-rose'    },
+  'Transport':             { key: 's-transport',         icon: '🚚', logo: 'logo-slate',   sectBg: 'sect-bg-slate'   },
   'Autre':                 { key: 's-autre',             icon: '🏢', logo: 'logo-teal',    sectBg: 'sect-bg-teal'    },
 };
 
@@ -1005,6 +1010,7 @@ const SECTOR_COLORS = {
   'Agriculture':            '#65A30D',
   'Technologie':            '#3B82F6',
   'Santé':                  '#F43F5E',
+  'Transport':              '#64748B',
   'Autre':                  '#14B8A6',
 };
 
